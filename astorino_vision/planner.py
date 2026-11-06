@@ -10,9 +10,9 @@ from dataclasses import dataclass
 
 import numpy as np
 
-import Alua.config as C
-from Alua.geometry import grasp_yaw_delta, pile_of, predict_push, rect, rects_overlap, rot_oat, spread_apart, wrap180
-from Alua.scene import CUBE_MM
+import astorino_vision.config as C
+from astorino_vision.geometry import grasp_yaw_delta, pile_of, predict_push, rect, rects_overlap, rot_oat, spread_apart, wrap180
+from astorino_vision.scene import CUBE_MM
 
 
 @dataclass

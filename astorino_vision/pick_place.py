@@ -8,7 +8,7 @@ pick_place.py - главная программа: башни из кубико�
 Высота башен измеряется по глубине при каждом снимке, так что после перезапуска программы
 или ручной правки башни счётчики восстанавливаются сами.
 
-Запуск (из папки asto): python -m Alua.pick_place [--watch] [--step] [--color red]
+Запуск (из папки asto): python -m astorino_vision.pick_place [--watch] [--step] [--color red]
 Окно:   A - собрать все башни, SPACE - один цикл, R - пересчитать башни, W - наблюдение вкл/выкл,
         S - стоп после текущего действия, Q/Esc - выход.
 Робот:  режим REPEAT, Zeroing выполнен, astorino software/RoboDK отключены от порта.
@@ -22,13 +22,13 @@ import time
 import cv2
 import numpy as np
 
-import Alua.config as C
-from Alua.astorino_usb import AstorinoError, connect_from_config
-from Alua.colors import DRAW_COLOR
-from Alua.geometry import Calibration
-from Alua.planner import Planner
-from Alua.scene import CUBE_MM, Scene
-from Alua.vision import CubeDetector, RealSenseCamera, draw
+import astorino_vision.config as C
+from astorino_vision.astorino_usb import AstorinoError, connect_from_config
+from astorino_vision.colors import DRAW_COLOR
+from astorino_vision.geometry import Calibration
+from astorino_vision.planner import Planner
+from astorino_vision.scene import CUBE_MM, Scene
+from astorino_vision.vision import CubeDetector, RealSenseCamera, draw
 
 WIN = "pick & place"
 
@@ -94,7 +94,7 @@ class PickPlace:
         try:
             self.calib = Calibration.load(C.CALIB_FILE)
         except FileNotFoundError:
-            raise SystemExit(f"{C.CALIB_FILE} не найден - сначала калибровка: python -m Alua.calibrate")
+            raise SystemExit(f"{C.CALIB_FILE} не найден - сначала калибровка: python -m astorino_vision.calibrate")
         if self.calib.data.get("max_mm", 0) > 15:
             print(f"[pick] ВНИМАНИЕ: ошибка калибровки {self.calib.data['max_mm']:.1f} мм - возможны промахи")
         self.det = CubeDetector(C.CUBE_SIZE_M, C.TOP_FACE_FRAC)

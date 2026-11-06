@@ -2,7 +2,7 @@
 """
 Подбор HSV-порогов цвета кубиков под текущее освещение (робот не нужен).
 
-Запуск из папки asto: python -m Alua.hsv_tune yellow
+Запуск из папки asto: python -m astorino_vision.hsv_tune yellow
 Ползунками добиться, чтобы в окне маски белыми были только кубики этого цвета (целиком), потом Q:
 итоговый диапазон печатается в консоль - вписать его в config.COLOR_RANGES.
 """
@@ -10,8 +10,8 @@ import argparse
 
 import cv2
 
-import Alua.config as C
-from Alua.vision import RealSenseCamera
+import astorino_vision.config as C
+from astorino_vision.vision import RealSenseCamera
 
 WIN = "HSV tune"
 NAMES = ("H low", "S low", "V low", "H high", "S high", "V high")

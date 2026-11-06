@@ -32,7 +32,7 @@ execute : pick_place.execute → astorino_usb (robot motion)
 ```
 ├── calibration.json            camera → robot calibration (R, t, observation pose)
 ├── vision_detect.py            standalone RealSense + HSV cube detection test
-└── Alua/
+└── astorino_vision/
     ├── config.py               all settings: tower spots, grasp heights, speeds, HSV ranges
     ├── pick_place.py           main program: robot motions, build loop, UI window, watch mode
     ├── planner.py              decides what to do next: grasp pose, push, clearing tower spots
@@ -56,12 +56,12 @@ execute : pick_place.execute → astorino_usb (robot motion)
 ## Run
 
 ```bash
-pip install -r Alua/requirements.txt
+pip install -r astorino_vision/requirements.txt
 # from the repository root:
-python -m Alua.calibrate          # calibrate camera → robot (once / after moving the camera)
-python -m Alua.pick_place         # start; press A in the camera window to build all towers
-python -m Alua.pick_place --watch # watch mode on from the start
-python -m Alua.pick_place --step  # confirm every motion with Enter
+python -m astorino_vision.calibrate          # calibrate camera → robot (once / after moving the camera)
+python -m astorino_vision.pick_place         # start; press A in the camera window to build all towers
+python -m astorino_vision.pick_place --watch # watch mode on from the start
+python -m astorino_vision.pick_place --step  # confirm every motion with Enter
 ```
 
 Keys in the camera window: `A` build all · `SPACE` one cycle · `W` toggle watch · `R` re-measure towers · `S` stop after current action · `Q`/`Esc` quit.

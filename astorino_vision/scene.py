@@ -8,9 +8,9 @@ from collections import namedtuple
 import cv2
 import numpy as np
 
-import Alua.config as C
-from Alua.colors import classify_color, color_mask
-from Alua.vision import Detection
+import astorino_vision.config as C
+from astorino_vision.colors import classify_color, color_mask
+from astorino_vision.vision import Detection
 
 CUBE_MM = C.CUBE_SIZE_M * 1000.0
 

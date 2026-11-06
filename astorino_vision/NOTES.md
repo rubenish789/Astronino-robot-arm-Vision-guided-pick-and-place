@@ -16,9 +16,9 @@
 3. Запустить программу **из папки `asto`**:
    ```
    cd c:\Users\buesh\Desktop\коды\Astorio\asto
-   python -m Alua.pick_place            # обычный запуск
-   python -m Alua.pick_place --watch    # наблюдение включено сразу, без A
-   python -m Alua.pick_place --step     # каждое движение подтверждается Enter в консоли
+   python -m astorino_vision.pick_place            # обычный запуск
+   python -m astorino_vision.pick_place --watch    # наблюдение включено сразу, без A
+   python -m astorino_vision.pick_place --step     # каждое движение подтверждается Enter в консоли
 4. Откроется окно камеры `pick & place`. Разложить кубики слева на столе и нажать `A`.
 
 Если «Робот не найден по USB» - проверить кабель и питание (порт COM4, VID 16C0).
@@ -58,7 +58,7 @@ Astorio/
 ├── .vscode/                  кнопки запуска для VS Code
 └── asto/                     РАБОЧАЯ ПАПКА - запуск отсюда
     ├── calibration.json      калибровка камера → робот (единственная)
-    └── Alua/                 код
+    └── astorino_vision/                 код
         ├── config.py         ВСЕ настройки (башни, пальцы, толчки, наблюдение, скорости, высоты, HSV-цвета)
         ├── pick_place.py     главная программа: движения робота, сборка (run_once/run_all), окно, наблюдение
         ├── planner.py        что делать: поза захвата, толчок, уборка места под башню (робота не двигает)
@@ -67,8 +67,8 @@ Astorio/
         ├── colors.py         цвет кубика по HSV
         ├── geometry.py       калибровка, плоскость захвата (z_at), повороты, прямоугольники на столе
         ├── astorino_usb.py   связь с роботом по USB (команды, движения, ошибки)
-        ├── calibrate.py      калибровка камеры: python -m Alua.calibrate
-        ├── hsv_tune.py       подбор HSV-порогов цвета: python -m Alua.hsv_tune yellow
+        ├── calibrate.py      калибровка камеры: python -m astorino_vision.calibrate
+        ├── hsv_tune.py       подбор HSV-порогов цвета: python -m astorino_vision.hsv_tune yellow
         ├── requirements.txt  нужные библиотеки
         └── NOTES.md          этот файл
 ```
@@ -130,7 +130,7 @@ Astorio/
 стоящую башню, за край зоны, обратно туда, откуда куб только что приехал. Не больше 15 толчков
 за один сбор (`PUSH_MAX`).
 
-**Цвета путаются** - `python -m Alua.hsv_tune <цвет>`, ползунками подобрать маску, вписать напечатанный
+**Цвета путаются** - `python -m astorino_vision.hsv_tune <цвет>`, ползунками подобрать маску, вписать напечатанный
 диапазон в `COLOR_RANGES` (config.py). Цвет берётся по середине рамки куба (`COLOR_SHRINK` 60%).
 
 ## Главные настройки (`config.py`)
@@ -182,7 +182,7 @@ Astorio/
 
 `asto/calibration.json` - пересчитана математически после смены позы съёмки 2026-09-23 (ошибка
 в среднем 4 мм, максимум 7.5 мм). Если захват промахивается вбок (пальцы садятся мимо куба, а не
-выше/ниже) - перекалибровать: `python -m Alua.calibrate` (из папки `asto`). После перекалибровки
+выше/ниже) - перекалибровать: `python -m astorino_vision.calibrate` (из папки `asto`). После перекалибровки
 заново подобрать `GRASP_DOWN_MM`.
 
 2026-10-22: захват промахивался на 5+ мм по Y; пробовали ручной сдвиг `CALIB_SHIFT_MM` (-5, -15, +5, +25 -

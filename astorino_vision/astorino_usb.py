@@ -442,7 +442,7 @@ class AstorinoUSB:
 
 def connect_from_config(verbose=False, port=None):
     """Подключение с параметрами из config.py."""
-    import Alua.config as C
+    import astorino_vision.config as C
     return AstorinoUSB(port or C.ROBOT_PORT, C.ROBOT_BAUD, verbose=verbose,
                        keepalive_s=C.KEEPALIVE_S, auto_reconnect=C.AUTO_RECONNECT,
                        io_lsb_first=C.IO_LSB_FIRST).connect()

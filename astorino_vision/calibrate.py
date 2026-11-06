@@ -2,7 +2,7 @@
 """
 calibrate.py
 
-Калибровка камера→робот. Запуск из папки asto: python -m Alua.calibrate [--manual]
+Калибровка камера→робот. Запуск из папки asto: python -m astorino_vision.calibrate [--manual]
 
 Камера закреплена на руке (eye-in-hand): система координат камеры одна и та же
 ТОЛЬКО пока рука стоит в одной и той же позе съёмки. В качестве этой позы
@@ -31,10 +31,10 @@ import argparse
 import cv2
 import numpy as np
 
-import Alua.config as C
-from Alua.astorino_usb import AstorinoError, connect_from_config
-from Alua.geometry import Calibration, fit_rigid
-from Alua.vision import CubeDetector, RealSenseCamera, table_info
+import astorino_vision.config as C
+from astorino_vision.astorino_usb import AstorinoError, connect_from_config
+from astorino_vision.geometry import Calibration, fit_rigid
+from astorino_vision.vision import CubeDetector, RealSenseCamera, table_info
 
 MIN_POINTS = 4
 WIN = "calibrate"

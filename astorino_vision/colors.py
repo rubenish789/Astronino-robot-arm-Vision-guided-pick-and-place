@@ -3,7 +3,7 @@
 import cv2
 import numpy as np
 
-import Alua.config as C
+import astorino_vision.config as C
 
 DRAW_COLOR = {          # BGR для отрисовки
     "red": (0, 0, 255),

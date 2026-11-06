@@ -6,7 +6,7 @@ import math
 
 import numpy as np
 
-import Alua.config as C
+import astorino_vision.config as C
 
 
 def rot_z(deg):
