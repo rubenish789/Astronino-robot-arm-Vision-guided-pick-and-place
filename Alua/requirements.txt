@@ -1,0 +1,4 @@
+pyserial>=3.5
+numpy
+opencv-python>=4.8
+pyrealsense2
